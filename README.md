@@ -12,35 +12,37 @@ This repository contains configuration files for specialized AI subagents that c
 
 ## 🎯 Available Agents
 
-### 🔵 OpenSCAD Agent (openscadag)
+Each agent is organized in its own directory with a configuration file (`agent.md`) and detailed README.
+
+### 🔵 [OpenSCAD Agent](agents/openscadag/) (openscadag)
 **Expert in parametric 3D modeling and optimization**
 - OpenSCAD functional programming and CSG operations
 - CGAL rendering optimization (15-60× performance improvements)
 - 3D printing validation and geometry checking
 - Parametric design with Customizer interface
 
-### 🟢 PSR Fixer
+### 🟢 [PSR Fixer](agents/psr-fixer/)
 **Automatic PHP Standards Recommendations compliance fixer**
 - Adds strict types declarations
 - Fixes naming conventions and visibility modifiers
 - Ensures PSR-1/PSR-12 compliance
 - Automated code formatting
 
-### 🟡 PSR Auditor
+### 🟡 [PSR Auditor](agents/psr-auditor/)
 **PHP Standards Recommendations compliance auditor**
 - Comprehensive PSR compliance checking
 - Detailed violation explanations
 - Priority-based issue reporting
 - Educational feedback for developers
 
-### 🟣 Code Reviewer
+### 🟣 [Code Reviewer](agents/code-reviewer/)
 **Comprehensive code review specialist**
 - Logic and correctness analysis
 - Design patterns and SOLID principles
 - Best practices enforcement
 - Constructive and educational feedback
 
-### 🔴 Penetration Tester
+### 🔴 [Penetration Tester](agents/penetration-tester/)
 **Security testing and vulnerability assessment**
 - Simulates common attack vectors (SQL injection, XSS, CSRF)
 - Identifies security vulnerabilities
@@ -64,11 +66,26 @@ cd Augment-Code-CLI-SUBAGENTS
 
 ## 📖 Usage
 
-Each agent is defined in its own markdown file with specific instructions and expertise areas. To use an agent:
+Each agent is organized in its own directory under `agents/` with:
+- `agent.md` - Agent configuration file with instructions and expertise
+- `README.md` - Detailed documentation about the agent's capabilities
 
-1. Select the appropriate agent for your task
-2. Load the agent configuration in Augment Code CLI
+To use an agent:
+
+1. Browse the `agents/` directory and select the appropriate agent for your task
+2. Load the agent configuration file (`agent.md`) in Augment Code CLI
 3. Interact with the specialized agent for your specific needs
+
+Example:
+```bash
+# Navigate to an agent directory
+cd agents/openscadag
+
+# Review the agent's capabilities
+cat README.md
+
+# Use agent.md with Augment Code CLI
+```
 
 ## 🛠️ Creating New Agents
 

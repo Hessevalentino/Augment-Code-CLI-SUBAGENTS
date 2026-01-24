@@ -1,10 +1,20 @@
 # Documentation Rules
 
+## Project Structure
+All subagents must be organized in the following structure:
+```
+agents/
+  ├── agent-name/
+  │   ├── agent.md       # Agent configuration file
+  │   └── README.md      # Agent documentation (max 500 words)
+```
+
 ## README Files
 - Create minimal README files for individual subagents only
 - Maximum 500 words per README
-- No icons or emojis in documentation
+- No icons or emojis in agent documentation
 - Focus on essential information only
+- Each agent must have its own directory under `agents/`
 
 ## Prohibited Documentation
 - Do NOT create supporting documentation files beyond minimal READMEs
@@ -20,6 +30,7 @@ When creating README files for subagents, include only:
 - Core capabilities (3-5 bullet points maximum)
 - Basic usage example
 - Essential configuration notes if applicable
+- Workflow overview if relevant
 
 ## Style Guidelines
 - Use plain text formatting
@@ -48,8 +59,10 @@ Before creating a new agent, ALWAYS:
 1. **Research** - Use web-search and codebase-retrieval to find best practices
 2. **Analyze** - Review existing agents in this project for consistency
 3. **Design** - Define clear role, expertise areas, and methodology
-4. **Implement** - Create agent configuration following established patterns
-5. **Document** - Create minimal README (max 500 words, no icons/emojis)
+4. **Create Structure** - Create new directory under `agents/agent-name/`
+5. **Implement** - Create `agent.md` configuration following established patterns
+6. **Document** - Create minimal `README.md` (max 500 words, no icons/emojis)
+7. **Update Main README** - Add agent to main README.md with links
 
 ### Agent Configuration Standards
 - Use consistent YAML frontmatter structure (name, description, model, color)
@@ -58,4 +71,43 @@ Before creating a new agent, ALWAYS:
 - Provide concrete examples where applicable
 - Use professional English for code examples and technical content
 - Maintain consistency with existing agents in the project
+- Place agent.md in `agents/agent-name/` directory
+- Create accompanying README.md in same directory
+
+### Updating GitHub README
+When creating a new subagent, ALWAYS update the main README.md file:
+
+1. **Add agent to "Available Agents" section**
+   - Use appropriate colored circle emoji matching the agent's color
+   - Add agent name with link to its directory
+   - Add brief tagline as bold text
+   - List 3-4 key capabilities as bullet points
+   - Maintain consistent formatting with existing agents
+
+2. **Follow existing pattern:**
+   ```markdown
+   ### [emoji] [Agent Name](agents/agent-name/) (filename)
+   **Brief description/tagline**
+   - Key capability 1
+   - Key capability 2
+   - Key capability 3
+   - Key capability 4
+   ```
+
+3. **Color emoji mapping:**
+   - cyan/blue: 🔵
+   - green: 🟢
+   - yellow: 🟡
+   - purple: 🟣
+   - red: 🔴
+   - orange: 🟠
+   - brown: 🟤
+   - white/gray: ⚪
+
+4. **Keep README current:**
+   - Always add new agents in logical order
+   - Link to agent directory: `[Agent Name](agents/agent-name/)`
+   - Update agent count if mentioned
+   - Ensure all agents are documented
+   - Maintain professional and concise descriptions
 
