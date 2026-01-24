@@ -1,3 +1,6 @@
+# Augment Code Configuration
+.augmentrules
+
 # Operating System Files
 .DS_Store
 .DS_Store?
