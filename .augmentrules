@@ -1,0 +1,61 @@
+# Documentation Rules
+
+## README Files
+- Create minimal README files for individual subagents only
+- Maximum 500 words per README
+- No icons or emojis in documentation
+- Focus on essential information only
+
+## Prohibited Documentation
+- Do NOT create supporting documentation files beyond minimal READMEs
+- Do NOT create comprehensive guides or tutorials
+- Do NOT create changelog files
+- Do NOT create contributing guides
+- Do NOT create architecture documentation
+- Do NOT create API documentation files
+
+## README Content Guidelines
+When creating README files for subagents, include only:
+- Brief description of the subagent purpose
+- Core capabilities (3-5 bullet points maximum)
+- Basic usage example
+- Essential configuration notes if applicable
+
+## Style Guidelines
+- Use plain text formatting
+- No emojis or icons
+- No decorative elements
+- Professional and concise tone
+- English language for code and technical terms
+- Czech language acceptable for user-facing descriptions if appropriate
+
+## File Naming
+- All file and folder names must be lowercase
+- Use hyphens for word separation
+- Never capitalize first letters of files or folders
+
+## Creating New Agents
+
+### Research Phase
+Before creating a new agent, ALWAYS:
+- Search for best practices in AI agent design and prompt engineering
+- Research domain-specific expertise requirements for the agent's specialty
+- Look for existing agent patterns and proven methodologies
+- Review successful agent implementations in similar domains
+- Identify common pitfalls and anti-patterns to avoid
+
+### Agent Design Process
+1. **Research** - Use web-search and codebase-retrieval to find best practices
+2. **Analyze** - Review existing agents in this project for consistency
+3. **Design** - Define clear role, expertise areas, and methodology
+4. **Implement** - Create agent configuration following established patterns
+5. **Document** - Create minimal README (max 500 words, no icons/emojis)
+
+### Agent Configuration Standards
+- Use consistent YAML frontmatter structure (name, description, model, color)
+- Define clear expertise boundaries and limitations
+- Include specific methodologies and workflows
+- Provide concrete examples where applicable
+- Use professional English for code examples and technical content
+- Maintain consistency with existing agents in the project
+
