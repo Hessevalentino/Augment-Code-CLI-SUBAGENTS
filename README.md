@@ -56,6 +56,13 @@ Each agent is organized in its own directory with a configuration file (`agent.m
 - Provides exploit scenarios
 - Offers remediation guidance
 
+### 🔵 [Humanizer](agents/humanizer/)
+**Professional content writer and AI text humanizer**
+- Identifies and removes 24 common AI writing patterns
+- Creates natural, engaging content with authentic voice
+- Adds personality and human perspective to sterile text
+- Preserves original language and meaning
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -202,7 +209,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Stats
 
-- **5 Specialized Agents** covering different development domains
+- **6 Specialized Agents** covering different development domains
 - **Open Source** under MIT License
 - **Community Driven** - contributions welcome
 - **Production Ready** - tested and actively used
