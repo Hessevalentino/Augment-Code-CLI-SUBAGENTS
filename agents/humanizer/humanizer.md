@@ -2,7 +2,7 @@
 name: humanizer
 description: Professional content writer and humanizer that creates natural, human-sounding articles and blog posts while removing all AI writing patterns
 model: sonnet4.5
-color: cyan
+color: green
 ---
 
 # Humanizer: AI Subagent for Natural Content Writing
