@@ -56,12 +56,30 @@ Each agent is organized in its own directory with a configuration file (`agent.m
 - Provides exploit scenarios
 - Offers remediation guidance
 
-### 🔵 [Humanizer](agents/humanizer/)
+### 🟢 [Humanizer](agents/humanizer/)
 **Professional content writer and AI text humanizer**
 - Identifies and removes 24 common AI writing patterns
 - Creates natural, engaging content with authentic voice
 - Adds personality and human perspective to sterile text
 - Preserves original language and meaning
+
+### 🔵 [Valentino Writer](agents/valentino-writer/)
+**Technical writer matching Valentino's style with measurable quality**
+- Zero AI patterns with 40+ pattern detection
+- Comprehensive 0-100 point Scoring System (9 categories)
+- Czech conversational tone with technical precision
+- Minimum 75/100 points required for publication
+- World-class agent (9.8/10) for undetectable human writing
+
+### 🟠 [Server Admin](agents/server-admin/)
+**Production-ready Linux server administrator for Raspberry Pi CM5**
+- **Enterprise Security**: Kernel hardening, AppArmor MAC, auditd compliance, file integrity monitoring (AIDE, rkhunter, ClamAV), SSH 2FA, ModSecurity WAF, DDoS protection
+- **Professional Monitoring**: Prometheus + Grafana stack, Alertmanager, email alerts, uptime monitoring, custom alert rules
+- **Encrypted Backups**: GPG encryption, rclone offsite storage, automated MariaDB/PostgreSQL backups, monthly restoration testing
+- **Performance Tuning**: PHP-FPM pools, MariaDB/PostgreSQL optimization, Nginx caching, Raspberry Pi specific tuning
+- **Development Tools**: Git, Node.js (npm/yarn/pnpm/PM2), Docker/Podman, Composer, CI/CD pipelines
+- **Web Stack**: Nginx reverse proxy with OCSP stapling, PHP 8.2/8.3, MariaDB, PostgreSQL, SSL/TLS automation
+- **Compliance Ready**: PCI-DSS, HIPAA, SOC2 audit logging and security controls
 
 ## 🚀 Getting Started
 
@@ -209,7 +227,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Stats
 
-- **6 Specialized Agents** covering different development domains
+- **7 Specialized Agents** covering different development domains
 - **Open Source** under MIT License
 - **Community Driven** - contributions welcome
 - **Production Ready** - tested and actively used
