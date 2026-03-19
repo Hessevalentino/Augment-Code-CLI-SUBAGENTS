@@ -1,0 +1,663 @@
+"""
+User Management GraphQL API Schema
+Demonstrates best practices for GraphQL schema design including:
+- Relay-style pagination
+- Input types for mutations
+- Error handling with payload types
+- Proper nullable/non-nullable fields
+- Comprehensive descriptions
+"""
+
+# ============================================================================
+# Scalar Types
+# ============================================================================
+
+"""
+ISO 8601 date-time string
+Example: 2026-03-19T10:30:00Z
+"""
+scalar DateTime
+
+"""
+Email address in valid format
+"""
+scalar Email
+
+"""
+URL in valid format
+"""
+scalar URL
+
+# ============================================================================
+# Enums
+# ============================================================================
+
+"""
+User role in the system
+"""
+enum UserRole {
+  """
+  Administrator with full access
+  """
+  ADMIN
+  
+  """
+  Regular user with standard permissions
+  """
+  USER
+  
+  """
+  Moderator with elevated permissions
+  """
+  MODERATOR
+}
+
+"""
+User account status
+"""
+enum UserStatus {
+  """
+  Active account
+  """
+  ACTIVE
+  
+  """
+  Inactive account (user deactivated)
+  """
+  INACTIVE
+  
+  """
+  Suspended account (admin action)
+  """
+  SUSPENDED
+}
+
+"""
+Sort direction for queries
+"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""
+Field to sort users by
+"""
+enum UserSortField {
+  NAME
+  EMAIL
+  CREATED_AT
+  UPDATED_AT
+}
+
+# ============================================================================
+# Object Types
+# ============================================================================
+
+"""
+Represents a user in the system
+"""
+type User {
+  """
+  Unique identifier for the user
+  """
+  id: ID!
+  
+  """
+  User's email address (unique)
+  """
+  email: Email!
+  
+  """
+  User's display name
+  """
+  name: String!
+  
+  """
+  User's role in the system
+  """
+  role: UserRole!
+  
+  """
+  User's account status
+  """
+  status: UserStatus!
+  
+  """
+  User's profile information
+  """
+  profile: Profile
+  
+  """
+  Orders placed by this user
+  """
+  orders(
+    """
+    Filter by order status
+    """
+    status: OrderStatus
+    
+    """
+    Number of items to return (max 100)
+    """
+    first: Int = 20
+    
+    """
+    Cursor for pagination
+    """
+    after: String
+  ): OrderConnection!
+  
+  """
+  Timestamp when user was created
+  """
+  createdAt: DateTime!
+  
+  """
+  Timestamp when user was last updated
+  """
+  updatedAt: DateTime!
+}
+
+"""
+User profile information
+"""
+type Profile {
+  """
+  User's biography
+  """
+  bio: String
+  
+  """
+  URL to user's avatar image
+  """
+  avatar: URL
+  
+  """
+  User's location
+  """
+  location: String
+  
+  """
+  User's personal website
+  """
+  website: URL
+}
+
+"""
+Placeholder for Order type
+"""
+type Order {
+  id: ID!
+  status: OrderStatus!
+  total: Float!
+  createdAt: DateTime!
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+# ============================================================================
+# Connection Types (Relay-style Pagination)
+# ============================================================================
+
+"""
+Connection type for paginated user results
+"""
+type UserConnection {
+  """
+  List of user edges
+  """
+  edges: [UserEdge!]!
+  
+  """
+  Pagination information
+  """
+  pageInfo: PageInfo!
+  
+  """
+  Total count of users matching the query
+  """
+  totalCount: Int!
+}
+
+"""
+Edge type for user connection
+"""
+type UserEdge {
+  """
+  The user node
+  """
+  node: User!
+  
+  """
+  Cursor for this edge
+  """
+  cursor: String!
+}
+
+"""
+Connection type for paginated order results
+"""
+type OrderConnection {
+  edges: [OrderEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type OrderEdge {
+  node: Order!
+  cursor: String!
+}
+
+"""
+Information about pagination in a connection
+"""
+type PageInfo {
+  """
+  Whether there are more items after this page
+  """
+  hasNextPage: Boolean!
+  
+  """
+  Whether there are items before this page
+  """
+  hasPreviousPage: Boolean!
+  
+  """
+  Cursor of the first item in this page
+  """
+  startCursor: String
+  
+  """
+  Cursor of the last item in this page
+  """
+  endCursor: String
+}
+
+# ============================================================================
+# Input Types
+# ============================================================================
+
+"""
+Input for creating a new user
+"""
+input CreateUserInput {
+  """
+  User's email address
+  """
+  email: Email!
+
+  """
+  User's display name
+  """
+  name: String!
+
+  """
+  User's password (min 8 characters)
+  """
+  password: String!
+
+  """
+  User's role (defaults to USER)
+  """
+  role: UserRole = USER
+
+  """
+  Optional profile information
+  """
+  profile: ProfileInput
+}
+
+"""
+Input for updating an existing user
+"""
+input UpdateUserInput {
+  """
+  User ID to update
+  """
+  id: ID!
+
+  """
+  New email address
+  """
+  email: Email
+
+  """
+  New display name
+  """
+  name: String
+
+  """
+  New role
+  """
+  role: UserRole
+
+  """
+  New status
+  """
+  status: UserStatus
+
+  """
+  Updated profile information
+  """
+  profile: ProfileInput
+}
+
+"""
+Input for user profile information
+"""
+input ProfileInput {
+  bio: String
+  avatar: URL
+  location: String
+  website: URL
+}
+
+"""
+Input for filtering users
+"""
+input UserFilterInput {
+  """
+  Search by name or email
+  """
+  search: String
+
+  """
+  Filter by role
+  """
+  role: UserRole
+
+  """
+  Filter by status
+  """
+  status: UserStatus
+}
+
+"""
+Input for sorting users
+"""
+input UserSortInput {
+  """
+  Field to sort by
+  """
+  field: UserSortField!
+
+  """
+  Sort direction
+  """
+  direction: SortDirection!
+}
+
+# ============================================================================
+# Payload Types (for mutations with error handling)
+# ============================================================================
+
+"""
+Payload returned when creating a user
+"""
+type CreateUserPayload {
+  """
+  The created user (null if errors occurred)
+  """
+  user: User
+
+  """
+  List of errors that occurred
+  """
+  errors: [UserError!]!
+
+  """
+  Whether the operation was successful
+  """
+  success: Boolean!
+}
+
+"""
+Payload returned when updating a user
+"""
+type UpdateUserPayload {
+  """
+  The updated user (null if errors occurred)
+  """
+  user: User
+
+  """
+  List of errors that occurred
+  """
+  errors: [UserError!]!
+
+  """
+  Whether the operation was successful
+  """
+  success: Boolean!
+}
+
+"""
+Payload returned when deleting a user
+"""
+type DeleteUserPayload {
+  """
+  ID of the deleted user
+  """
+  deletedUserId: ID
+
+  """
+  List of errors that occurred
+  """
+  errors: [UserError!]!
+
+  """
+  Whether the operation was successful
+  """
+  success: Boolean!
+}
+
+"""
+Error that occurred during a user operation
+"""
+type UserError {
+  """
+  Field that caused the error (if applicable)
+  """
+  field: String
+
+  """
+  Human-readable error message
+  """
+  message: String!
+
+  """
+  Machine-readable error code
+  """
+  code: String!
+}
+
+"""
+Authentication payload
+"""
+type AuthPayload {
+  """
+  JWT token for authentication
+  """
+  token: String
+
+  """
+  The authenticated user
+  """
+  user: User
+
+  """
+  List of errors that occurred
+  """
+  errors: [UserError!]!
+
+  """
+  Whether authentication was successful
+  """
+  success: Boolean!
+}
+
+# ============================================================================
+# Root Query Type
+# ============================================================================
+
+type Query {
+  """
+  Get user by ID
+  """
+  user(
+    """
+    User ID
+    """
+    id: ID!
+  ): User
+
+  """
+  Search and filter users with pagination
+  """
+  users(
+    """
+    Filter criteria
+    """
+    filter: UserFilterInput
+
+    """
+    Sort criteria
+    """
+    sort: UserSortInput
+
+    """
+    Number of items to return (max 100)
+    """
+    first: Int = 20
+
+    """
+    Cursor for pagination
+    """
+    after: String
+  ): UserConnection!
+
+  """
+  Get currently authenticated user
+  """
+  me: User
+
+  """
+  Search users by email or name
+  """
+  searchUsers(
+    """
+    Search query
+    """
+    query: String!
+
+    """
+    Number of results (max 50)
+    """
+    limit: Int = 10
+  ): [User!]!
+}
+
+# ============================================================================
+# Root Mutation Type
+# ============================================================================
+
+type Mutation {
+  """
+  Authenticate user and receive JWT token
+  """
+  login(
+    """
+    User's email address
+    """
+    email: Email!
+
+    """
+    User's password
+    """
+    password: String!
+  ): AuthPayload!
+
+  """
+  Create a new user
+  """
+  createUser(
+    """
+    User creation input
+    """
+    input: CreateUserInput!
+  ): CreateUserPayload!
+
+  """
+  Update an existing user
+  """
+  updateUser(
+    """
+    User update input
+    """
+    input: UpdateUserInput!
+  ): UpdateUserPayload!
+
+  """
+  Delete a user by ID
+  """
+  deleteUser(
+    """
+    User ID to delete
+    """
+    id: ID!
+  ): DeleteUserPayload!
+
+  """
+  Update current user's profile
+  """
+  updateMyProfile(
+    """
+    Profile update input
+    """
+    input: ProfileInput!
+  ): UpdateUserPayload!
+}
+
+# ============================================================================
+# Root Subscription Type (optional)
+# ============================================================================
+
+type Subscription {
+  """
+  Subscribe to user creation events
+  """
+  userCreated: User!
+
+  """
+  Subscribe to user update events
+  """
+  userUpdated(
+    """
+    Filter by user ID
+    """
+    userId: ID
+  ): User!
+
+  """
+  Subscribe to user deletion events
+  """
+  userDeleted: ID!
+}
+
+# ============================================================================
+# Schema Definition
+# ============================================================================
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
