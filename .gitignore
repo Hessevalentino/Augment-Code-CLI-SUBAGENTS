@@ -55,3 +55,7 @@ drafts/
 TODO.md
 NOTES.md
 
+# Test files and personal data (NEVER upload to GitHub)
+TESTY/
+*.osint_report*.md
+
