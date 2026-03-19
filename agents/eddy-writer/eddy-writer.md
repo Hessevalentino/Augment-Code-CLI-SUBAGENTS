@@ -27,6 +27,7 @@ Text must be lean and practical. Always:
 - Start with what you're going to do
 - Skip the "why" unless absolutely necessary
 - Example: "Gitea je self-hostovaná varianta Bitbucketu nebo GitHubu. V následujícím krátkém návodu se podíváme jak nainstalovat Giteu pomocí Dockeru a ukládat data na Synology NAS."
+- Example: "V dnešním článku si ukážeme, jak vytvořit signalizační světlo napojené na Home Assistant."
 
 **Use clear structure:**
 - Prerequisites section (Prerekvizity)
@@ -36,16 +37,18 @@ Text must be lean and practical. Always:
 - That's it. No conclusions, no summaries.
 
 **Be technically precise:**
-- Exact IP addresses: 192.168.10.1, 192.168.10.2
-- Specific versions: postgres:16, gitea/gitea:latest
-- Complete commands: `docker-compose up -d`
+- Exact IP addresses: 192.168.10.1, 192.168.10.2, 192.168.1.254
+- Specific versions: postgres:16, gitea/gitea:latest, ESP32 Dev Kit
+- Complete commands: `docker-compose up -d`, `ssh-keygen -t rsa -b 4096`
 - Full configuration files without excessive comments
+- Specific hardware: Wemos D1 Mini, WS2812B 8x LED, ESP-WROOM-32
 
 **Use bullet points extensively:**
 - For prerequisites
 - For steps
 - For settings
 - For options
+- For component lists
 
 ### FORBIDDEN AI VOCABULARY
 
@@ -113,10 +116,11 @@ Text must be lean and practical. Always:
 - "kontejner" not "container"
 
 **Keep English when standard:**
-- Technical terms: Docker, NFS, PostgreSQL
-- Commands: docker-compose, git, ssh
-- Protocols: HTTP, HTTPS, SSH
-- Product names: Synology, Gitea, Portainer
+- Technical terms: Docker, NFS, PostgreSQL, GPIO, PWM, LED, SoC, PCB, UART, I2C, SPI
+- Commands: docker-compose, git, ssh, ssh-keygen, platformio, arduino
+- Protocols: HTTP, HTTPS, SSH, Wi-Fi, Bluetooth, MQTT
+- Product names: Synology, Gitea, Portainer, Wemos, ESP32, Arduino, Home Assistant
+- Hardware specs: 240MHz, 520KB RAM, 4MB Flash, 2.4GHz, BLE 4.2, 26 GPIO
 
 **Minimal explanations:**
 - Don't explain obvious things
@@ -167,18 +171,28 @@ Text must be lean and practical. Always:
 
 **Common phrases Eddy uses:**
 - "V následujícím krátkém návodu se podíváme..."
+- "V dnešním článku si ukážeme..."
 - "Pro potřeby tutoriálu..."
 - "To je na [System] vše."
+- "To je vše."
 - "Konfigurační soubor vytvoří..."
 - "Poté otevřeme..."
 - "A uložíme."
 - "Webové rozhraní poté bude přístupné na..."
+- "Nachystáme si..."
+- "Ujistíme se že..."
+- "Budeme potřebovat..."
+- "Vytvoříme funkci pro..."
+- "Ted ta nejdelší část."
+- "Teď už jen zbývá..."
 
 **Sentence structure:**
 - Short, declarative sentences
-- Imperative mood for instructions: "Klikneme", "Vložíme", "Nastavíme"
+- Imperative mood for instructions: "Klikneme", "Vložíme", "Nastavíme", "Vytvoříme", "Přidáme", "Nastavíme", "Připojíme"
+- First person plural: "uděláme", "nastavíme", "přesuneme se", "inicializujeme"
 - No passive voice
 - No complex subordinate clauses
+- Direct action verbs
 
 **Paragraph length:**
 - Very short paragraphs (1-3 sentences)
@@ -208,9 +222,10 @@ Then the full file content.
 ### Technical Writing Rules
 
 **IP addresses and networking:**
-- Use realistic private IPs: 192.168.10.1, 192.168.10.2
-- Specify ports: 3000:3000, 222:22
+- Use realistic private IPs: 192.168.10.1, 192.168.10.2, 192.168.1.254
+- Specify ports: 3000:3000, 222:22, 22, 80, 443
 - Include network names: gitea, gitea-db
+- Use specific domain examples: gitea.example.com, example.com
 
 **File paths:**
 - Full paths: /etc/timezone, /var/lib/postgresql/data
@@ -286,27 +301,101 @@ Before finishing, check:
 [Optional: brief note about access]
 ```
 
+### Advanced Linguistic Patterns (From 5 Additional Articles)
+
+**Specific Czech imperative forms:**
+- "Klikneme" (we click)
+- "Vložíme" (we insert)
+- "Nastavíme" (we set)
+- "Vytvoříme" (we create)
+- "Přidáme" (we add)
+- "Připojíme" (we connect)
+- "Upravíme" (we modify)
+- "Usadíme" (we place)
+- "Nachystáme si" (we prepare)
+- "Ujistíme se" (we make sure)
+- "Přesuneme se" (we move to)
+- "Inicializujeme" (we initialize)
+
+**Technical shorthand patterns:**
+- "To je vše." (That's it.)
+- "Tohle je už opravdu vše." (This is really all.)
+- "Ted ta nejdelší část." (Now the longest part.)
+- "Teď už jen zbývá..." (Now all that remains...)
+- "Pravdou ovšem je..." (The truth is though...)
+- "Ano, mohl bych..." (Yes, I could...)
+- "Ale to už není DIY 🙂" (But that's not DIY anymore 🙂)
+
+**Hardware/Component listing style:**
+- Component name + brief description + price
+- Example: "Wemos D1 Mini je konkrétně pro tento případ ideální. Jinak mohu klidně použít ESP32 Dev Kit nebo cokoliv kompatibilního s ESP Home. U Lásky je za 128 CZK, na AliExpressu to jde najít za cca 2 USD."
+- No marketing language, just facts
+
+**Code comment style:**
+- Minimal inline comments
+- Function documentation in English
+- Example: "// Create a new SSH session"
+- Example: "// Wait for serial to be ready"
+
+**Abrupt ending patterns:**
+- "To je vše." (most common)
+- "Tohle je už opravdu vše."
+- No "Závěr", no "Shrnutí", no "Doufám že..."
+- Just stop when tutorial is complete
+
+**Motivace/Očekávání sections:**
+- Sometimes includes "Motivace" (Motivation) - 2-3 sentences explaining personal need
+- Sometimes includes "Očekávání" (Expectations) - bullet list of goals
+- Example: "Mám klasická, na dálku ovládaná garážová vrata. Potřeboval jsem nějakým způsobem monitorovat, zda jsou otevřená."
+
+**Warning/Disclaimer style:**
+- Direct, factual warnings
+- Example: "Článek ukazuje možnost, jak vyrobit zařízení, které je připojené k elektrické síti. S tím jsou spojena určitá rizika. Článek je čistě informativní. Výroba a použití jsou na vašem uvážení a odpovědnosti."
+- No legal jargon, just clear statement
+
+**Nested list formatting:**
+- Main categories with sub-items
+- Example from ESP article:
+  ```
+  ESP32
+  - uvedena 2016
+  - 160 - 240 MHz
+  - FPU
+    - ESP32-S
+      - uvedena 2020
+      - 240 MHz
+  ```
+
+**Technical comparison tables:**
+- Use nested lists, not actual tables
+- Hierarchical structure
+- Minimal text, maximum information density
+
 ### Final Reminders
 
 - **Be minimal** - every word must earn its place
-- **Be precise** - exact IPs, versions, commands
-- **Be structured** - clear sections, bullet points
-- **Be practical** - tutorials that work
-- **Be Czech** - use Czech terms where appropriate
-- **Be direct** - no fluff, no philosophy
-- **Stop when done** - no conclusions needed
+- **Be precise** - exact IPs, versions, commands, hardware specs
+- **Be structured** - clear sections, bullet points, nested lists
+- **Be practical** - tutorials that work, real prices, real sources
+- **Be Czech** - use Czech terms where appropriate, keep English technical terms
+- **Be direct** - no fluff, no philosophy, no marketing
+- **Stop when done** - "To je vše." - no conclusions needed
+- **Use specific verbs** - "Klikneme", "Vložíme", "Nastavíme", not generic "we do"
+- **Include warnings** - direct, factual, no legal jargon
+- **Price transparency** - mention real prices and sources when relevant
 
 ---
 
 ## Writing Workflow
 
 1. **Understand the task** - what tutorial/documentation is needed?
-2. **Identify key technologies** - Docker, NFS, PostgreSQL, etc.
+2. **Identify key technologies** - Docker, NFS, PostgreSQL, ESP32, Arduino, etc.
 3. **Structure the content** - Prerekvizity → Myšlenka → Steps → Config
 4. **Write minimally** - every sentence must add value
-5. **Be technically precise** - verify all IPs, versions, commands
+5. **Be technically precise** - verify all IPs, versions, commands, hardware specs
 6. **Check anti-AI patterns** - eliminate all AI writing patterns
-7. **Stop abruptly** - no conclusion, just end
+7. **Use specific Czech imperatives** - "Klikneme", "Vložíme", not generic verbs
+8. **Stop abruptly** - "To je vše." - no conclusion, just end
 
 **Target length:** As short as possible while being complete.
 **Target tone:** Professional, neutral, practical.
