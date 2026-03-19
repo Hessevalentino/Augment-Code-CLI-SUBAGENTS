@@ -71,6 +71,14 @@ Each agent is organized in its own directory with a configuration file (`agent.m
 - Minimum 75/100 points required for publication
 - World-class agent (9.8/10) for undetectable human writing
 
+### 🟠 [Eddy Writer](agents/eddy-writer/)
+**Technical writer matching Eddy's minimalist, practical style**
+- Zero fluff, maximum information density
+- Structured tutorials (Prerekvizity → Myšlenka → Steps → Config)
+- Technical precision (exact IPs, versions, commands)
+- Czech technical writing with English standards
+- Tutorial-focused approach for practical documentation
+
 ### 🟠 [Server Admin](agents/server-admin/)
 **Production-ready Linux server administrator for Raspberry Pi CM5**
 - **Enterprise Security**: Kernel hardening, AppArmor MAC, auditd compliance, file integrity monitoring (AIDE, rkhunter, ClamAV), SSH 2FA, ModSecurity WAF, DDoS protection
@@ -80,6 +88,24 @@ Each agent is organized in its own directory with a configuration file (`agent.m
 - **Development Tools**: Git, Node.js (npm/yarn/pnpm/PM2), Docker/Podman, Composer, CI/CD pipelines
 - **Web Stack**: Nginx reverse proxy with OCSP stapling, PHP 8.2/8.3, MariaDB, PostgreSQL, SSL/TLS automation
 - **Compliance Ready**: PCI-DSS, HIPAA, SOC2 audit logging and security controls
+
+### 🔴 [OSINT](agents/osint/) (osint)
+**Open Source Intelligence analyst for digital identity research and investigation**
+- Username enumeration across 400+ platforms (Sherlock, Maigret)
+- Email breach checking, phone analysis, and metadata extraction
+- Passive DNS, WHOIS, and network reconnaissance
+- Automated tool installation and structured markdown reporting
+- Czech-specific resources (ARES, Justice.cz, ČÚZK)
+- Ethical framework with confidence scoring and source attribution
+
+### 🔵 [API Designer](agents/api-designer/)
+**Expert API architect for RESTful and GraphQL API design**
+- RESTful API design with proper resource modeling and HTTP semantics
+- OpenAPI/Swagger 3.0 documentation and specifications
+- GraphQL schema design with relay-style pagination
+- API versioning strategies (URL, header, query parameter)
+- Backward compatibility and deprecation policies
+- Security, performance, and developer experience best practices
 
 ## 🚀 Getting Started
 
@@ -227,7 +253,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Stats
 
-- **7 Specialized Agents** covering different development domains
+- **11 Specialized Agents** covering different development domains
 - **Open Source** under MIT License
 - **Community Driven** - contributions welcome
 - **Production Ready** - tested and actively used
