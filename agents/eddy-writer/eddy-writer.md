@@ -81,6 +81,35 @@ Text must be lean and practical. Always:
 - ❌ "at this point in time" → ✅ "teď"
 - ❌ "it is important to note that" → ✅ just say it directly
 
+**NO superficial analyses with -ing endings:**
+- ❌ "highlighting the importance of..."
+- ❌ "emphasizing the need for..."
+- ❌ "reflecting the community's connection..."
+- ❌ "showcasing the diversity of..."
+- ❌ "contributing to the overall..."
+- ❌ "ensuring the stability of..."
+- ✅ Just state the fact directly without the -ing clause
+
+**NO em dash overuse:**
+- Use em dashes (—) sparingly
+- Don't use multiple em dashes in one sentence
+- Prefer commas or periods for most cases
+- Example: ❌ "Docker—unlike VMs—uses containers—which are lighter"
+- Example: ✅ "Docker používá kontejnery, které jsou lehčí než VM."
+
+**NO rule of three forcing:**
+- Don't artificially group things into threes
+- List actual items, not forced triplets
+- Example: ❌ "Budeme potřebovat rychlost, stabilitu a bezpečnost"
+- Example: ✅ "Budeme potřebovat Docker a PostgreSQL"
+
+**NO elegant variation (synonym cycling):**
+- Use the same term consistently
+- Don't cycle through synonyms to avoid repetition
+- Example: ❌ "Docker kontejner... tento container... daný kontejner... uvedený container"
+- Example: ✅ "Docker kontejner... kontejner... kontejner"
+- Technical terms should be repeated, not varied
+
 ### Technical Precision
 - All technical details must be accurate and verifiable
 - Specific component names, software versions, hardware models
@@ -252,10 +281,15 @@ Before finishing, check:
 - [ ] No emojis
 - [ ] No vague attributions
 - [ ] No filler phrases
+- [ ] No superficial -ing endings (highlighting..., emphasizing..., reflecting...)
+- [ ] No em dash overuse (max 1 per sentence, prefer commas)
+- [ ] No rule of three forcing (list actual items, not forced triplets)
+- [ ] No elegant variation (use same term consistently, don't cycle synonyms)
 - [ ] Direct, imperative instructions
 - [ ] Technical precision (IPs, versions, paths)
 - [ ] Minimal explanations
 - [ ] Clear structure with Czech section names
+- [ ] Consistent terminology (no synonym cycling)
 
 ### Quality Metrics
 
