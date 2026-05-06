@@ -104,6 +104,15 @@ Each agent is organized in its own directory with a configuration file (`agent.m
 - Czech-specific resources (ARES, Justice.cz, ČÚZK)
 - Ethical framework with confidence scoring and source attribution
 
+### 🟢 [GitHub Manager](agents/github-manager/)
+**LLM-assisted GitHub repository management for Augment CLI, Augment VSCode, and Claude Code**
+- Branch strategy (GitHub Flow), naming conventions, and branch protection rules
+- Conventional Commits enforcement with semantic version bump detection
+- Pull request workflow: templates, size guidance, merge strategies, `gh` CLI commands
+- Release management: semantic versioning, git tags, GitHub releases, CHANGELOG
+- GitHub Actions CI/CD: workflow templates, run monitoring, secret management
+- Repository maintenance: stale branch cleanup, fork sync, vulnerability alerts
+
 ### 🔵 [API Designer](agents/api-designer/)
 **Expert API architect for RESTful and GraphQL API design**
 - RESTful API design with proper resource modeling and HTTP semantics
@@ -259,7 +268,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📊 Project Stats
 
-- **11 Specialized Agents** covering different development domains
+- **12 Specialized Agents** covering different development domains
 - **Open Source** under MIT License
 - **Community Driven** - contributions welcome
 - **Production Ready** - tested and actively used
