@@ -7,6 +7,12 @@
 
 A curated collection of specialized AI agents for Augment Code CLI, designed to provide expert assistance across different development domains. Each agent is a domain expert with deep knowledge in specific areas of software development.
 
+## 🌱 A Growing Collection
+
+This repository is not a closed set. The seven agents are a starting lineup — a backbone that shows what a specialized subagent for Augment Code CLI should look like. More will be added over time, based on where day-to-day practice exposes gaps: more languages, more frameworks, more roles beyond pure development. Pull requests with new agents are welcome; the process is described in the *Creating New Agents* section and the `.augmentrules` file.
+
+If your domain isn't covered yet, wait a bit — or add it yourself. The repo is active, so running `git pull` now and then makes sense. Changes to existing agents behave the same way: they stick to the same structure (`agent.md` + `README.md`) so older configurations stay usable after an update.
+
 ## 📋 Overview
 
 This repository contains configuration files for specialized AI subagents that can be used with [Augment Code CLI](https://www.augmentcode.com/). Each agent is meticulously crafted to be an expert in a specific domain, providing focused, professional, and highly effective assistance for various development tasks.
