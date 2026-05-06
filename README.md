@@ -3,6 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Augment Code](https://img.shields.io/badge/Augment_Code-Compatible-6c47ff)](https://www.augmentcode.com/)
+[![VS Code](https://img.shields.io/badge/VS_Code-Augment_Extension-007ACC?logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=augment.vscode-augment)
+[![Augment CLI](https://img.shields.io/badge/Augment_CLI-Compatible-6c47ff)](https://www.augmentcode.com/)
 
 
 A curated collection of specialized AI agents for Augment Code CLI, designed to provide expert assistance across different development domains. Each agent is a domain expert with deep knowledge in specific areas of software development.
